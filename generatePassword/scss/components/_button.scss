@@ -1,0 +1,13 @@
+@import "../variables/variables";
+@import "../mixins/mixins";
+
+.password__button button {
+    border-radius: 5px;
+    background: $background-first;
+    padding: 8px 16px;
+    border: none;
+    color: $main-color;
+    font-weight: $font-800;
+    font-size: $base-size;
+    cursor: pointer;
+}

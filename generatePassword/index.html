@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <section>
+        <div class="password">
+            <h1 class="password__name">Password Generator</h1>
+            <div class="password__main_input">
+                <input type="text">
+                <i class="fa fa-copy password__main_input__copy" style="font-size:24px"></i>
+            </div>
+            <div class="password__length">
+                <span>Password length</span>
+                <input type="number">
+            </div>
+            <label for="uppercase">
+                <div class="password__checkboxes">
+                    <span>Include uppercase letters</span>
+                    <input id="uppercase" type="checkbox">
+                </div>
+            </label>
+            <label for="lowercase">
+                <div class="password__checkboxes">
+                    <span>Include lowercase letters</span>
+                    <input id="lowercase" type="checkbox">
+                </div>
+            </label>
+            <label for="number">
+                <div class="password__checkboxes">
+                    <span>Include numbers</span>
+                    <input id="number" type="checkbox">
+                </div>
+            </label>
+            <label for="symbol">
+                <div class="password__checkboxes">
+                    <span>Include symbols</span>
+                    <input id="symbol" type="checkbox">
+                </div>
+            </label>
+            <div class="password__button">
+                <button type="button">Generate Password</button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="./main.js"></script>
+
+</body>
+
+</html>

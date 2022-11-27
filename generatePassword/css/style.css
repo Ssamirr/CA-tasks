@@ -1,0 +1,142 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1390C9;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+body section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+}
+body section .password {
+  background: #3C5BA6;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px 0px;
+}
+body section .password__name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+}
+body section .password__main_input {
+  padding: 0px 20px;
+  margin-bottom: 10px;
+  position: relative;
+}
+body section .password__main_input__copy {
+  position: absolute;
+  right: 30px;
+  color: #1390C9;
+  top: 6px;
+  cursor: pointer;
+}
+body section .password__main_input input {
+  width: 100%;
+  height: 35px;
+}
+body section .password__length {
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+body section .password__length input {
+  width: 50px;
+  height: 30px;
+}
+body section .password__checkboxes {
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+body section .password__button {
+  text-align: center;
+}
+
+.password__button button {
+  border-radius: 5px;
+  background: #1390C9;
+  padding: 8px 16px;
+  border: none;
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,76 @@
+@import "../variables/variables";
+@import "../mixins/mixins";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: $background-first;
+    font-size: $base-size;
+    font-weight: normal;
+    font-family: $poppins, $san-serif;
+    color: $main-color;
+
+    section {
+        @include display(flex, center, center, row);
+        width: 100%;
+        height: 100vh;
+
+        .password {
+            background: $background-secondary;
+            max-width: 500px;
+            width: 100%;
+            border-radius: 10px;
+            padding: $padding-2 0px;
+
+            &__name {
+                font-size: $large-size;
+                font-weight: $font-800;
+                margin-bottom: $margin-2;
+                text-align: center;
+            }
+
+            &__main_input {
+                padding: 0px $padding-2;
+                margin-bottom: $margin-1;
+                position: relative;
+
+                &__copy{
+                    position: absolute;
+                    right: 30px;
+                    color: $secondary-color;
+                    top: 6px;
+                    cursor: pointer;
+                }
+
+                & input {
+                    width: 100%;
+                    height: 35px;
+                }
+            }
+
+            &__length {
+                padding: 0px $padding-2;
+                @include display(flex, space-between, center, row);
+                margin-bottom: $margin-1;
+
+                & input {
+                    width: 50px;
+                    height: 30px;
+                }
+            }
+
+            &__checkboxes {
+                padding: 0px $padding-2;
+                @include display(flex, space-between, center, row);
+                margin-bottom: $margin-1;
+            }
+            &__button{
+                text-align: center;
+            }
+        }
+    }
+}
