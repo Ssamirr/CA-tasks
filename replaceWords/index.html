@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="text">qqqq wwww eeee rrrr tttt yyyy</div>
+
+    <div class="changed-text"> </div>
+
+    <button class="change-button">Change</button>
+
+
+    <script>
+        let change_button = document.querySelector('.change-button');
+        let text = document.querySelector(".text").innerText;
+        let new_array = text.split(" ");
+        let allRandomNumbers = [];
+        let new_text = "";
+
+        change_button.addEventListener('click', function () {
+
+            new_text = "";
+            allRandomNumbers = [];
+
+            for (let i = 0; i < new_array.length; i++) {
+                let random_number = Math.floor(Math.random() * new_array.length);
+
+                while (allRandomNumbers.includes(random_number)) {
+                    random_number = Math.floor(Math.random() * new_array.length);
+                    
+                }
+                allRandomNumbers.push(random_number);
+                new_text += new_array[random_number] + " ";
+            }
+            document.querySelector('.changed-text').innerText = new_text
+        })
+        
+    </script>
+</body>
+
+</html>
