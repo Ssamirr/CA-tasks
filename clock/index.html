@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        font-size: 60px;
+        font-weight: bold;
+        background: darkblue;
+        color: white;
+    }
+
+    .clock {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<body>
+
+    <div class="clock">
+        <div style="border:1px solid;border-radius:10px;padding: 20px;">
+            <span class="hour">Hour</span>:<span class="minutes">Minutes</span>:<span class="seconds">Seconds</span>
+        </div>
+    </div>
+
+    <script>
+        let hours_text = document.querySelector('.hour');
+        let minutes_text = document.querySelector('.minutes');
+        let seconds_text = document.querySelector('.seconds');
+
+        let full_date;;
+        let hours;
+        let minutes;
+        let seconds;
+
+
+
+        setInterval(function () {
+            full_date = new Date();
+            hours = full_date.getHours();
+            minutes = full_date.getMinutes();
+            seconds = full_date.getSeconds();
+
+            if (hours < 10) {
+                hours = '0' + hours;
+            }
+            if (hours == 24) {
+                hours = "00";
+            }
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+            if (minutes == 60) {
+                minutes = '00';
+            }
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            }
+            if (seconds == 60) {
+                seconds = '00';
+            }
+            hours_text.innerText = hours;
+            minutes_text.innerText = minutes;
+            seconds_text.innerText = seconds;
+        }, 1000);
+
+    </script>
+
+</body>
+
+</html>
