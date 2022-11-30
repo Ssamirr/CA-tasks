@@ -8,18 +8,25 @@ let level_easy = document.querySelector('.bubbleGame__area__buttons__level__easy
 let level_medium = document.querySelector('.bubbleGame__area__buttons__level__medium');
 let level_hard = document.querySelector('.bubbleGame__area__buttons__level__hard');
 let score_result = document.querySelector(".bubbleGame__area_user__score");
+let high_score_result = document.querySelector(".bubbleGame__area_user__highScore");
+let high_score;
 let show_bubble;
-
 let score = 0;
+
 
 joinButton.addEventListener("click", function () {
     event.preventDefault()
     if (user.value.trim().length == 0) {
-        alert("Enter Your Name")
+        alert("Enter Your Name");
     } else {
         userForm.style.display = "none";
         document.querySelector(".bubbleGame__area_user__name").innerText += user.value;
         document.querySelector(".bubbleGame__area").style.display = "block";
+        if (localStorage.getItem(user.value)) {
+            high_score_result.innerText = `High Score:${localStorage.getItem(user.value)}`;
+        } else {
+            high_score_result.innerText = `High Score:0`;
+        }
     }
 })
 
@@ -51,16 +58,12 @@ start_game.addEventListener("click", function () {
             element.classList.add("pointerEvent");
         }
     })
+    level_easy.classList.add("pointerEvent");
 })
 
 stop_game.addEventListener("click", function () {
     alert(`Your Score:${score}`)
-    // if(localStorage.getItem(user.value)){
-    //    if(localStorage.getItem(user.value)<score){
-
-    //    }
-    // }
-    // localStorage.setItem(user.value,score)
+    localStorageScore();
     stoppedGame();
 })
 
@@ -86,6 +89,7 @@ function bubble(time) {
 
         if (document.querySelectorAll(".bubbleGame__area__game__bubble").length == 50) {
             alert(`You Lost\nYour Score:${score}`);
+            localStorageScore();
             stoppedGame();
         }
 
@@ -95,6 +99,11 @@ function bubble(time) {
 function selectedLevel() {
     document.querySelectorAll(".level_buttons").forEach(function (element) {
         element.classList.remove("selected-button-color");
+        if (element == event.target) {
+            element.classList.add("pointerEvent");
+        } else {
+            element.classList.remove("pointerEvent")
+        }
     })
 }
 
@@ -120,6 +129,18 @@ function stoppedGame() {
     document.querySelectorAll(".level_buttons").forEach(function (element) {
         element.classList.remove("selected-button-color");
     })
-    score=0;
+    score = 0;
     score_result.innerText = `Score:${score}`;
+}
+
+function localStorageScore() {
+    if (localStorage.getItem(user.value)) {
+        if (localStorage.getItem(user.value) < score) {
+            localStorage.setItem(user.value, score);
+            high_score_result.innerText = `High Score:${localStorage.getItem(user.value)}`;
+        }
+    } else {
+        localStorage.setItem(user.value, score);
+        high_score_result.innerText = `High Score:${localStorage.getItem(user.value)}`;
+    }
 }
