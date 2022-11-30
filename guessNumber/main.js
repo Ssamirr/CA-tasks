@@ -21,9 +21,9 @@ guess_button.addEventListener("click", function () {
 
         } else if (randomNumber > guess_input.value) {
             document.querySelector(".display").innerText = "Low-Try Again"
-        } else{
+        } else {
             document.querySelector(".display").innerText = "High-Try Again"
-        } 
+        }
     }
 
 })
