@@ -13,6 +13,10 @@ let high_score;
 let show_bubble;
 let score = 0;
 
+// let audio = new Audio('../audio/bubble-sound.wav');
+// console.log(audio)
+// audio.play()
+
 
 joinButton.addEventListener("click", function () {
     event.preventDefault()
@@ -108,6 +112,7 @@ function selectedLevel() {
 }
 
 function clickBubble(item) {
+    // audio.play()
     item.remove();
     if (level_easy.classList.contains("selected-button-color")) {
         score += 1;
