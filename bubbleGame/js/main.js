@@ -1,21 +1,18 @@
 let user = document.querySelector(".bubbleGame__userName");
 let joinButton = document.querySelector(".bubbleGame__button");
 let userForm = document.querySelector(".user-form");
-let bubbleGame__area__game = document.querySelector(".bubbleGame__area__game");
-let start_game = document.querySelector('.start_game');
-let stop_game = document.querySelector('.stop_game');
-let level_easy = document.querySelector('.bubbleGame__area__buttons__level__easy');
-let level_medium = document.querySelector('.bubbleGame__area__buttons__level__medium');
-let level_hard = document.querySelector('.bubbleGame__area__buttons__level__hard');
-let score_result = document.querySelector(".bubbleGame__area_user__score");
-let high_score_result = document.querySelector(".bubbleGame__area_user__highScore");
-let high_score;
-let show_bubble;
+let bubbleGameAreaGame = document.querySelector(".bubbleGame__area__game");
+let startGame = document.querySelector('.start_game');
+let stopGame = document.querySelector('.stop_game');
+let levelEasy = document.querySelector('.bubbleGame__area__buttons__level__easy');
+let levelMedium = document.querySelector('.bubbleGame__area__buttons__level__medium');
+let levelHard = document.querySelector('.bubbleGame__area__buttons__level__hard');
+let scoreResult = document.querySelector(".bubbleGame__area_user__score");
+let highScoreResult = document.querySelector(".bubbleGame__area_user__highScore");
+let showBubble;
 let score = 0;
+let audio = new Audio("./audio/click.mp3");
 
-// let audio = new Audio('../audio/bubble-sound.wav');
-// console.log(audio)
-// audio.play()
 
 
 joinButton.addEventListener("click", function () {
@@ -27,34 +24,34 @@ joinButton.addEventListener("click", function () {
         document.querySelector(".bubbleGame__area_user__name").innerText += user.value;
         document.querySelector(".bubbleGame__area").style.display = "block";
         if (localStorage.getItem(user.value)) {
-            high_score_result.innerText = `High Score:${localStorage.getItem(user.value)}`;
+            highScoreResult.innerText = `High Score:${localStorage.getItem(user.value)}`;
         } else {
-            high_score_result.innerText = `High Score:0`;
+            highScoreResult.innerText = `High Score:0`;
         }
     }
 })
 
-level_easy.addEventListener("click", function () {
+levelEasy.addEventListener("click", function () {
     bubble(2000);
     selectedLevel();
-    level_easy.classList.add("selected-button-color");
+    levelEasy.classList.add("selected-button-color");
 })
 
-level_medium.addEventListener("click", function () {
+levelMedium.addEventListener("click", function () {
     bubble(1000);
     selectedLevel();
-    level_medium.classList.add("selected-button-color");
+    levelMedium.classList.add("selected-button-color");
 })
 
-level_hard.addEventListener("click", function () {
+levelHard.addEventListener("click", function () {
     bubble(500);
     selectedLevel();
-    level_hard.classList.add("selected-button-color");
+    levelHard.classList.add("selected-button-color");
 })
 
-start_game.addEventListener("click", function () {
+startGame.addEventListener("click", function () {
     bubble(2000);
-    level_easy.classList.add("selected-button-color");
+    levelEasy.classList.add("selected-button-color");
     document.querySelectorAll(".game_buttons").forEach(function (element) {
         if (element != event.target) {
             element.classList.remove("pointerEvent");
@@ -62,18 +59,18 @@ start_game.addEventListener("click", function () {
             element.classList.add("pointerEvent");
         }
     })
-    level_easy.classList.add("pointerEvent");
+    levelEasy.classList.add("pointerEvent");
 })
 
-stop_game.addEventListener("click", function () {
+stopGame.addEventListener("click", function () {
     alert(`Your Score:${score}`)
     localStorageScore();
     stoppedGame();
 })
 
 function bubble(time) {
-    clearInterval(show_bubble)
-    show_bubble = setInterval(() => {
+    clearInterval(showBubble)
+    showBubble = setInterval(() => {
         let bubble = document.createElement("div");
         bubble.classList.add('bubbleGame__area__game__bubble');
         document.querySelector(".bubbleGame__area__game").appendChild(bubble);
@@ -81,8 +78,8 @@ function bubble(time) {
             clickBubble(event.target)
         });
 
-        let spacex = bubbleGame__area__game.offsetWidth - bubble.offsetWidth;
-        let spacey = bubbleGame__area__game.offsetHeight - bubble.offsetHeight;
+        let spacex = bubbleGameAreaGame.offsetWidth - bubble.offsetWidth;
+        let spacey = bubbleGameAreaGame.offsetHeight - bubble.offsetHeight;
 
 
         let randomNumberX = Math.ceil(Math.random() * spacex);
@@ -112,40 +109,40 @@ function selectedLevel() {
 }
 
 function clickBubble(item) {
-    // audio.play()
     item.remove();
-    if (level_easy.classList.contains("selected-button-color")) {
+    if (levelEasy.classList.contains("selected-button-color")) {
         score += 1;
-    } else if (level_medium.classList.contains("selected-button-color")) {
+    } else if (levelMedium.classList.contains("selected-button-color")) {
         score += 2
     } else {
         score += 3;
     }
-    score_result.innerText = `Score:${score}`;
+    scoreResult.innerText = `Score:${score}`;
+    audio.play()
 }
 
 function stoppedGame() {
     document.querySelector(".bubbleGame__area__game").innerHTML = " ";
-    clearInterval(show_bubble);
+    clearInterval(showBubble);
     document.querySelectorAll(".game_buttons").forEach(function (element) {
         element.classList.add("pointerEvent");
     })
-    start_game.classList.remove("pointerEvent");
+    startGame.classList.remove("pointerEvent");
     document.querySelectorAll(".level_buttons").forEach(function (element) {
         element.classList.remove("selected-button-color");
     })
     score = 0;
-    score_result.innerText = `Score:${score}`;
+    scoreResult.innerText = `Score:${score}`;
 }
 
 function localStorageScore() {
     if (localStorage.getItem(user.value)) {
         if (localStorage.getItem(user.value) < score) {
             localStorage.setItem(user.value, score);
-            high_score_result.innerText = `High Score:${localStorage.getItem(user.value)}`;
+            highScoreResult.innerText = `High Score:${localStorage.getItem(user.value)}`;
         }
     } else {
         localStorage.setItem(user.value, score);
-        high_score_result.innerText = `High Score:${localStorage.getItem(user.value)}`;
+        highScoreResult.innerText = `High Score:${localStorage.getItem(user.value)}`;
     }
 }

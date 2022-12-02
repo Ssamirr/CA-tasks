@@ -35,11 +35,11 @@
     </div>
 
     <script>
-        let hours_text = document.querySelector('.hour');
-        let minutes_text = document.querySelector('.minutes');
-        let seconds_text = document.querySelector('.seconds');
+        let hoursText = document.querySelector('.hour');
+        let minutesText = document.querySelector('.minutes');
+        let secondsText = document.querySelector('.seconds');
 
-        let full_date;;
+        let fullDate;;
         let hours;
         let minutes;
         let seconds;
@@ -47,10 +47,10 @@
 
 
         setInterval(function () {
-            full_date = new Date();
-            hours = full_date.getHours();
-            minutes = full_date.getMinutes();
-            seconds = full_date.getSeconds();
+            fullDate = new Date();
+            hours = fullDate.getHours();
+            minutes = fullDate.getMinutes();
+            seconds = fullDate.getSeconds();
 
             if (hours < 10) {
                 hours = '0' + hours;
@@ -70,9 +70,9 @@
             if (seconds == 60) {
                 seconds = '00';
             }
-            hours_text.innerText = hours;
-            minutes_text.innerText = minutes;
-            seconds_text.innerText = seconds;
+            hoursText.innerText = hours;
+            minutesText.innerText = minutes;
+            secondsText.innerText = seconds;
         }, 1000);
 
     </script>

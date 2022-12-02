@@ -3,30 +3,30 @@ let text = document.querySelector("textarea");
 
 text.addEventListener('input', function () {
 
-    let letter_count = 0;
-    let word_count = 0;
-    let sentence_count = 0;
+    let letterCount = 0;
+    let wordCount = 0;
+    let sentenceCount = 0;
     
-    let text_value = text.value.replace(/\s+/g, ' ').trim();
-    let new_list_text_value = text_value.split(" ");
+    let textValue = text.value.replace(/\s+/g, ' ').trim();
+    let newListTextValue = textValue.split(" ");
 
-    for (let i = 0; i < new_list_text_value.length; i++) {
-        letter_count += new_list_text_value[i].length;
-        word_count++;
+    for (let i = 0; i < newListTextValue.length; i++) {
+        letterCount += newListTextValue[i].length;
+        wordCount++;
 
-        if (new_list_text_value[i].includes(".")) {
-            sentence_count++;
+        if (newListTextValue[i].includes(".")) {
+            sentenceCount++;
         }
 
-        if (new_list_text_value[i].length == 0) {
-            word_count = 0;
+        if (newListTextValue[i].length == 0) {
+            wordCount = 0;
         }
     }
 
 
-    document.querySelector('.letter-count').innerText = letter_count;
-    document.querySelector('.word-count').innerText = word_count;
-    document.querySelector('.sentence-count').innerText = sentence_count;
+    document.querySelector('.letter-count').innerText = letterCount;
+    document.querySelector('.word-count').innerText = wordCount;
+    document.querySelector('.sentence-count').innerText = sentenceCount;
 })
 
 

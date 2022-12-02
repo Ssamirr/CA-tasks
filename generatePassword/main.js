@@ -1,52 +1,52 @@
-let main_input = document.querySelector('.password__main_input input');
-let password_copy = document.querySelector('.password__main_input__copy');
-let password_checkboxes = document.querySelectorAll(".password__checkboxes");
-let password_length = document.querySelector('.password__length input')
-let password_length_value = password_length.value;
-let password_button = document.querySelector('.password__button button');
+let mainInput = document.querySelector('.password__main_input input');
+let passwordCopy = document.querySelector('.password__main_input__copy');
+let passwordCheckboxes = document.querySelectorAll(".password__checkboxes");
+let passwordLength = document.querySelector('.password__length input')
+let passwordLengthValue = passwordLength.value;
+let passwordButton = document.querySelector('.password__button button');
 
-const upperCase_letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-const lowerCase_letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const symbols = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
-let all_variables = [];
-let new_password = "";
+let allVariables = [];
+let newPassword = "";
 
-main_input.readOnly = true;
+mainInput.readOnly = true;
 
-password_copy.addEventListener('click', function () {
-    main_input.select()
+passwordCopy.addEventListener('click', function () {
+    mainInput.select()
     document.execCommand("copy")
 })
 
-password_length.addEventListener('input', function () {
-    if (password_length.value < 5) {
-        password_length.value = 5;
+passwordLength.addEventListener('input', function () {
+    if (passwordLength.value < 5) {
+        passwordLength.value = 5;
     }
-    password_length_value = password_length.value;
+    passwordLengthValue = passwordLength.value;
 })
 
-password_button.addEventListener('click', function () {
-    all_variables = [];
-    new_password = "";
+passwordButton.addEventListener('click', function () {
+    allVariables = [];
+    newPassword = "";
     if (document.getElementById('uppercase').checked) {
-        all_variables.push(...upperCase_letters);
+        allVariables.push(...upperCaseLetters);
     }
     if (document.getElementById('lowercase').checked) {
-        all_variables.push(...lowerCase_letters);
+        allVariables.push(...lowerCaseLetters);
     }
     if (document.getElementById('number').checked) {
-        all_variables.push(...numbers);
+        allVariables.push(...numbers);
     }
     if (document.getElementById('symbol').checked) {
-        all_variables.push(...symbols);
+        allVariables.push(...symbols);
     }
 
-    if (all_variables.length > 0) {
-        for (let i = 0; i < password_length_value; i++) {
-            let random_number = Math.floor(Math.random() * all_variables.length);
-            new_password += all_variables[random_number];
+    if (allVariables.length > 0) {
+        for (let i = 0; i < passwordLengthValue; i++) {
+            let randomNumber = Math.floor(Math.random() * allVariables.length);
+            newPassword += allVariables[randomNumber];
         }
     }
-    main_input.value = new_password;
+    mainInput.value = newPassword;
 })

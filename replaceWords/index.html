@@ -18,28 +18,28 @@
 
 
     <script>
-        let change_button = document.querySelector('.change-button');
+        let changeButton = document.querySelector('.change-button');
         let text = document.querySelector(".text").innerText;
-        let new_array = text.split(" ");
+        let newArray = text.split(" ");
         let allRandomNumbers = [];
-        let new_text = "";
+        let newText = "";
 
-        change_button.addEventListener('click', function () {
+        changeButton.addEventListener('click', function () {
 
-            new_text = "";
+            newText = "";
             allRandomNumbers = [];
 
-            for (let i = 0; i < new_array.length; i++) {
-                let random_number = Math.floor(Math.random() * new_array.length);
+            for (let i = 0; i < newArray.length; i++) {
+                let random_number = Math.floor(Math.random() * newArray.length);
 
                 while (allRandomNumbers.includes(random_number)) {
-                    random_number = Math.floor(Math.random() * new_array.length);
+                    random_number = Math.floor(Math.random() * newArray.length);
                     
                 }
                 allRandomNumbers.push(random_number);
-                new_text += new_array[random_number] + " ";
+                newText += newArray[random_number] + " ";
             }
-            document.querySelector('.changed-text').innerText = new_text
+            document.querySelector('.changed-text').innerText = newText
         })
         
     </script>

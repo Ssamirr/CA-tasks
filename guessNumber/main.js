@@ -1,25 +1,25 @@
-let guess_button = document.querySelector(".guess_button");
-let guess_input = document.querySelector(".guess_input");
+let guessButton = document.querySelector(".guess_button");
+let guessInput = document.querySelector(".guess_input");
 
 let randomNumber = Math.ceil(Math.random() * 15);
 console.log(randomNumber)
 
 
-let guessed_number = 0;
+let guessedNumber = 0;
 
-guess_button.addEventListener("click", function () {
+guessButton.addEventListener("click", function () {
 
-    if (!(guess_input.value >= 1 && guess_input.value <= 15)) {
+    if (!(guessInput.value >= 1 && guessInput.value <= 15)) {
         alert("Guess a number between 1-15");
     } else {
-        guessed_number++;
-        if (randomNumber == guess_input.value) {
+        guessedNumber++;
+        if (randomNumber == guessInput.value) {
             document.querySelector(".display").innerText = "Well done";
             document.querySelector(".guessedNumber").innerText += randomNumber;
-            document.querySelector(".mainNumber").innerText += guessed_number;
-            guess_button.classList.add("pointerEvent")
+            document.querySelector(".mainNumber").innerText += guessedNumber;
+            guessButton.classList.add("pointerEvent")
 
-        } else if (randomNumber > guess_input.value) {
+        } else if (randomNumber > guessInput.value) {
             document.querySelector(".display").innerText = "Low-Try Again"
         } else {
             document.querySelector(".display").innerText = "High-Try Again"
