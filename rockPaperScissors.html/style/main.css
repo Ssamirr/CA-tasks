@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    background: radial-gradient(hsl(214, 43%, 35%), hsl(237, 49%, 15%));
+    font-size: 16px;
+}
+
+.game {
+    height: 100vh;
+    padding: 0px 20px;
+}
+
+.game__contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: 1s ease all;
+    opacity: 1;
+}
+
+.game__header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    width: 100%;
+    border: 2px solid rgba(245, 245, 245, 0.915);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.game__header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(245, 245, 245, 0.915);
+    align-self: center;
+}
+
+.game__header__score {
+    background: rgba(245, 245, 245, 0.915);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 50px;
+    border-radius: 10px;
+    color: hsl(237, 49%, 15%);
+}
+
+.game__header__score h2 {
+    font-size: 3rem;
+}
+
+.game__header__score h4 {
+    opacity: 0.8;
+}
+
+.game__main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 50px;
+    opacity: 1;
+    transition: 1s ease all;
+    background-image: url("../images/bg-triangle.svg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.game__select {
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    width: 100%;
+    margin-top: 100px;
+    display: none;
+}
+
+.game__select h3 {
+    font-size: 1.2rem;
+    color: rgba(245, 245, 245, 0.915);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.game__select__sides {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game__main__tools,
+.game__main__tool {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.game__main__tools__svg {
+    padding: 40px;
+    background: rgba(245, 245, 245, 0.915);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game__main__paper {
+    border: 30px solid #7959f7;
+}
+
+.game__main__rock {
+    border: 30px solid rgba(255, 0, 0, 0.962);
+}
+
+.game__main__scissors {
+    border: 30px solid rgba(255, 255, 0, 0.94);
+}
+
+.game__main__top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.game__rules {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    border: 1px solid rgba(245, 245, 245, 0.915);
+    border-radius: 5px;
+}
+
+.game__rules button {
+    color: rgba(245, 245, 245, 0.915);
+    font-size: 1.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s ease all;
+    padding: 10px 20px;
+}
+
+.game__rules button:hover {
+    background: blue;
+}
+
+.modal {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -100%);
+    transition: 1s ease all;
+}
+
+.modal__show {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.game__modal {
+    width: 100%;
+    max-width: 400px;
+    width: 100%;
+    background: rgba(245, 245, 245, 0.915);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.game__modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.game__modal__header h4 {
+    font-size: 2rem;
+}
+
+.game__modal__ruleImage {
+    display: flex;
+    justify-content: center;
+}
+
+.game__modal__close {
+    cursor: pointer;
+}
+
+.game__select__sides button {
+    background: rgba(245, 245, 245, 0.915);
+    font-size: 1.2rem;
+    border-radius: 5px;
+    padding: 10px 30px;
+    transition: 0.5s ease all;
+}
+
+.game__select__sides button:hover {
+    color: red;
+    cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+    .game__header h1{
+        font-size: 1.3rem;
+    }
+    .game__header h1{
+        font-size: 2rem;
+    }
+    .game__header__score{
+        padding: 15px 30px;
+    }
+    .game__main__paper,.game__main__rock,.game__main__scissors{
+        border-width: 15px;
+    }
+    .game__main__tools__svg{
+        padding: 15px;
+    }
+    .game__select__sides button{
+        font-size: 1rem;
+        padding: 3px 10px;
+    }
+    .game__select h3{
+        font-size: 0.8rem;
+    }
+    .game__main{
+        background-size: contain;
+    }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock,Paper,Scissors</title>
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/main.css">
+</head>
+
+<body>
+    <main class="game">
+        <div class="game__contents">
+            <div class="game__header">
+                <h1>Rock <br> Paper <br> Scissors </h1>
+                <div class="game__header__score">
+                    <h4>Score</h4>
+                    <h2 class="user-score">
+                        <!-- user score will be here -->
+                    </h2>
+                </div>
+            </div>
+            <div class="game__main">
+                <div class="game__main__top">
+                    <div class="game__main__tools">
+                        <div class="game__main__tools__svg game__main__paper ">
+                            <img src="./images/icon-paper.svg" alt="">
+                        </div>
+
+                    </div>
+                    <div class="game__main__tools">
+                        <div class="game__main__tools__svg game__main__scissors ">
+                            <img src="./images/icon-scissors.svg" alt="">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="game__main__tools">
+                    <div class="game__main__tools__svg game__main__rock ">
+                        <img src="./images/icon-rock.svg" alt="">
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="game__select">
+                <div class="game__select__sides ">
+                    <h3>You Select</h3>
+                    <div class="user_side game__main__tool">
+                        <!-- user selection will be here -->
+                    </div>
+                </div>
+
+                <div class="game__select__sides">
+                    <h3 class="winner-or-losser">
+                        <!-- win or lost -->
+                    </h3>
+                    <button class="again-button">Play Again</button>
+                </div>
+
+                <div class="game__select__sides">
+                    <h3>The House Picked</h3>
+                    <div class="house_side game__main__tool">
+                        <!-- house selection will bere here -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="game__rules">
+            <button>Rules</button>
+        </div>
+
+        <div class="modal">
+            <div class="game__modal">
+                <div class="game__modal__header">
+                    <h4>Rules</h4>
+                    <span class="game__modal__close">
+                        <img src="./images/icon-close.svg" alt="">
+                    </span>
+                </div>
+                <div class="game__modal__ruleImage">
+                    <img src="./images/image-rules.svg" alt="">
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
