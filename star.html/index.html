@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<style>
+    .checked {
+        color: orange;
+    }
+
+    span{
+        color: black;
+    }
+
+    .stars{
+        display: flex;
+    }
+
+    .stars:hover span{
+        color: orange;
+    }
+
+    .stars span:hover~span {
+        color: black;
+    }
+</style>
+
+<body>
+
+    <div class="stars">
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    </div>
+
+    <script>
+        let i = 1;
+        document.querySelectorAll(".fa-star").forEach(function (e) {
+            e.setAttribute("key", i)
+            i++;
+            e.addEventListener("click", function () {
+                let key = e.getAttribute("key");
+                for (let i = 1; i <= key; i++) {
+                    document.querySelectorAll(".fa-star").forEach(function (star) {
+                        if (star.getAttribute("key") <= key) {
+                            star.classList.add("checked")
+                        } else {
+                            star.classList.remove("checked")
+                        }
+                    })
+                }
+            })
+
+        })
+    </script>
+
+</body>
+
+</html>

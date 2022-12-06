@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border: 1px solid;
+}
+
+th,
+td {
+    border: 1px solid red;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    color: white;
+    background: darkblue;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.suppliers-button {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.suppliers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* text-align: center; */
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border: 1px solid red;
+    background: firebrick;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
