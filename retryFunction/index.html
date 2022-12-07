@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Retry Function</title>
+</head>
+
+<body>
+
+    <script>
+
+        const BASE_URL = 'https://northwind.vercel.app/api/product/';
+        async function fetchData(BASE_URL,n){
+            try {
+                return await axios.get(BASE_URL);
+            } catch (err) {
+                console.log(n);
+                if (n === 1) {
+                    throw err;
+                }
+                return await fetchData(BASE_URL,n - 1)
+            }
+        }
+        let a = fetchData(BASE_URL,4);
+
+
+    </script>
+
+</body>
+
+</html>
