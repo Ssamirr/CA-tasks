@@ -1,0 +1,61 @@
+* {
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #b2aebf;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-container {
+    border: 10px solid #7e5d72;
+    width: 500px;
+    height: 500px;
+    border-radius: 5px;
+    position: relative;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #fff;
+    background: rgba(0, 0, 0, .5);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 2;
+    transition: 0.5s ease all;
+}
+button:hover{
+    background: rgb(0, 0, 0);
+}
+
+.next-btn {
+    right: 0;
+}
+
+.prev-btn {
+    left: 0;
+}
+
+img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+img{
+    display: none;
+}
+
+.show{
+    display: block;
+}
