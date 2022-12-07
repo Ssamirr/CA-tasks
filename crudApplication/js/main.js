@@ -53,7 +53,7 @@ function getSuppliers() {
         .then(res => res.json())
         .then(data => {
             document.querySelector(".suppliers").innerText = `Suppliers:${data.length}`;
-            data.forEach(element => {
+            data.reverse().forEach(element => {
                 showSuppliers(element);
             });
         })
@@ -85,8 +85,8 @@ function showSuppliers(item) {
 
     let tdUpdateButton = document.createElement("td");
     let updateButton = document.createElement("button");
-    updateButton.innerText = "Update"
-    tdUpdateButton.appendChild(updateButton)
+    updateButton.innerText = "Update";
+    tdUpdateButton.appendChild(updateButton);
 
     updateButton.addEventListener("click", function () {
         itemUpdate(item)
