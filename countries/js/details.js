@@ -19,7 +19,7 @@ function countryInfo(item) {
 
     let nativeName = document.createElement("span");
     for (let x in item.name.nativeName) {
-        let native = x;
+        let native = item.name.nativeName[x].common;
         nativeName.innerHTML = `<span class="bold">Native Name:</span>${native}`;
         break;
     }
@@ -73,6 +73,6 @@ function countryInfo(item) {
     }
 }
 
-document.querySelector('.back-button button').addEventListener("click",function(){
+document.querySelector('.back-button button').addEventListener("click", function () {
     window.location = "./index.html";
 })
