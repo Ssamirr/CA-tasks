@@ -2,6 +2,7 @@ let searchCountry = document.querySelector(".search-country");
 let mainCountries = document.querySelector(".main-countries");
 let selectOption = document.querySelector(".main-header_select");
 let selectOptions = [];
+let selectedCountries = [];
 
 const BASE_URL = 'https://restcountries.com/v3.1';
 
@@ -13,9 +14,8 @@ searchCountry.addEventListener("input", function () {
                 if (!data.length) {
                     mainCountries.innerHTML = "Data Not Found";
                 } else {
-                    dataHelper(data)
+                    filterForSelectOption(data);
                 }
-
             })
     } else {
         getData()
@@ -30,7 +30,7 @@ selectOption.addEventListener("change", function () {
         fetch(`${BASE_URL}/region/${selectOptionValue}`)
             .then(res => res.json())
             .then(data => {
-                dataHelper(data)
+                filterForSearch(data);
             })
     }
 })
@@ -40,20 +40,75 @@ const getData = () => {
     fetch(`${BASE_URL}/all`)
         .then(res => res.json())
         .then(data => {
-            dataHelper(data);
+            let selectedCountries = [];
+            data.forEach(function (element) {
+                if (searchCountry.value.length > 0) {
+                    let newOption = searchCountry.value;
+                    if (element.name.common.toLowerCase().includes(newOption.toLowerCase())) {
+                        selectedCountries.push(element);
+                    }
+                } else if (selectOption.value != 0) {
+                    let newOption = selectOption.value;
+                    if (newOption == element.region) {
+                        selectedCountries.push(element);
+                    }
+                } else {
+                    selectedCountries = data;
+                }
+            })
+            dataHelper(selectedCountries);
         })
 }
 
 function dataHelper(data) {
     mainCountries.innerHTML = "";
-    data.forEach(function (item) {
-        showCountries(item);
+    if (data.length) {
+        data.forEach(function (item) {
+            showCountries(item);
+        })
+    }
+    else {
+        mainCountries.innerHTML = "Data Not Found";
+    }
+}
+
+function filterForSearch(data) {
+    selectedCountries = [];
+    data.forEach(function (element) {
+        if (searchCountry.value.length > 0) {
+            let newOption = searchCountry.value;
+            if (element.name.common.toLowerCase().includes(newOption.toLowerCase())) {
+                selectedCountries.push(element);
+            }
+        } else {
+            selectedCountries = data;
+        }
     })
+    dataHelper(selectedCountries);
+}
+
+function filterForSelectOption(data) {
+    selectedCountries = [];
+    data.forEach(function (element) {
+        if (selectOption.value != 0) {
+            let newOption = selectOption.value;
+            if (newOption == element.region) {
+                selectedCountries.push(element);
+            }
+        } else {
+            selectedCountries = data;
+        }
+    })
+    dataHelper(selectedCountries);
 }
 
 function showCountries(item) {
+    let head = document.createElement("div");
+    head.classList.add("head")
+
     let mainCountriesItem = document.createElement("div");
     mainCountriesItem.classList.add("main-countries__item");
+    head.appendChild(mainCountriesItem)
 
     let countriesFlag = document.createElement("img");
     countriesFlag.classList.add('main-countries__item__flag');
@@ -76,7 +131,7 @@ function showCountries(item) {
 
     let countriesCapital = document.createElement("span");
     countriesCapital.classList.add("main-countries__item__info__capital");
-    countriesCapital.innerHTML = `<span class="bold">capital:</span>${item.capital}</span>`
+    countriesCapital.innerHTML = `<span class="bold">capital:</span>${item.capital?item.capital:" "}</span>`
 
     mainCountriesItem.appendChild(countriesFlag);
     mainCountriesItem.appendChild(mainCountriesItemInfo);
@@ -84,7 +139,7 @@ function showCountries(item) {
     mainCountriesItemInfo.appendChild(countriesPopulation);
     mainCountriesItemInfo.appendChild(countriesRegion);
     mainCountriesItemInfo.appendChild(countriesCapital);
-    mainCountries.appendChild(mainCountriesItem);
+    mainCountries.appendChild(head);
 
     if (!selectOptions.includes(item.region)) {
         selectOptions.push(item.region);
@@ -96,7 +151,7 @@ function showCountries(item) {
 
     mainCountriesItem.addEventListener("click", function () {
         window.location = "./detailPage.html";
-        let clickedCountry = item.name.common;
+        let clickedCountry = item.name.official;
         localStorage.setItem("clickedCountry", clickedCountry);
     })
 }

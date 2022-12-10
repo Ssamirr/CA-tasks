@@ -1,21 +1,46 @@
 const BASE_URL = 'https://restcountries.com/v3.1';
 let country = localStorage.getItem("clickedCountry");
 
+let allDetails = document.querySelector(".details");
 
-fetch(`${BASE_URL}/name/${country}`)
-    .then(res => res.json())
-    .then(data => {
-        countryInfo(data[0]);
-    })
+const getCountry = (country) => {
+    fetch(`${BASE_URL}/name/${country}?fullText=true`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            countryInfo(data[0]);
+        })
+        .catch(err=>console.log("err ",err))
+}
+
+getCountry(country);
 
 function countryInfo(item) {
-    let countryName = document.querySelector(".details-right__cname");
-    countryName.innerText = item.name.common;
+    let detailsLeft = document.createElement("div");
+    detailsLeft.classList.add("details-left");
 
-    let countryFlag = document.querySelector(".details-left img");
+    let countryFlag = document.createElement("img");
     countryFlag.src = item.flags.svg;
+    detailsLeft.appendChild(countryFlag);
 
-    let detailsInfoMain = document.querySelector(".details-info-main");
+    let detailsRight = document.createElement("div");
+    detailsRight.classList.add("details-right");
+
+    let countryName = document.createElement("h1");
+    countryName.classList.add("details-right__cname");
+    countryName.innerText = item.name.common;
+    detailsRight.appendChild(countryName);
+
+    let detailsInfo = document.createElement("div");
+    detailsInfo.classList.add("details-info");
+    detailsRight.appendChild(detailsInfo);
+
+    allDetails.appendChild(detailsLeft);
+    allDetails.appendChild(detailsRight);
+
+    let detailsInfoMain = document.createElement("div");
+    detailsInfoMain.classList.add("details-info-main");
+    detailsInfo.appendChild(detailsInfoMain);
 
     let nativeName = document.createElement("span");
     for (let x in item.name.nativeName) {
@@ -42,7 +67,9 @@ function countryInfo(item) {
     detailsInfoMain.appendChild(subRegion);
     detailsInfoMain.appendChild(capital);
 
-    let detailsInfoSecondary = document.querySelector(".details-info-secondary");
+    let detailsInfoSecondary = document.createElement("div");
+    detailsInfoSecondary.classList.add("details-info-secondary");
+    detailsInfo.appendChild(detailsInfoSecondary);
 
     let topLevelDomain = document.createElement("span");
     topLevelDomain.innerHTML = `<span class="bold">Top Level Domain:</span>${item.tld[0]}`;
@@ -65,11 +92,25 @@ function countryInfo(item) {
     detailsInfoSecondary.appendChild(currency);
     detailsInfoSecondary.appendChild(languages);
 
-    let countryBorders = document.querySelector(".borders");
+    let countryBorders = document.createElement("div");
+    countryBorders.classList.add("borders");
+    detailsRight.appendChild(countryBorders);
+    countryBorders.innerHTML = `<span class="bold">Borders:</span>`;
+
     for (let x in item.borders) {
         let borders = document.createElement("button");
         borders.innerHTML = item.borders[x];
         countryBorders.appendChild(borders);
+
+        borders.addEventListener("click", function () {
+            fetch(`${BASE_URL}/alpha/${item.borders[x]}`)
+                .then(res => res.json())
+                .then(data => {
+                    allDetails.innerHTML = " ";
+                    localStorage.setItem("clickedCountry", data[0].name.official);
+                    getCountry(data[0].name.official);
+                })
+        })
     }
 }
 
