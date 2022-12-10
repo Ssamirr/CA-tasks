@@ -1,7 +1,39 @@
 const BASE_URL = 'https://restcountries.com/v3.1';
 let country = localStorage.getItem("clickedCountry");
-
+let darkLightButton = document.querySelector(".header button");
+let darkLightButtonInner = darkLightButton.querySelector("span");
+let darkLightButtonIcon = darkLightButton.querySelector("i");
 let allDetails = document.querySelector(".details");
+
+window.addEventListener("load", function () {
+    if (localStorage.getItem("Mode")) {
+        if (localStorage.getItem("Mode") == "Light Mode") {
+            darkLightButtonInner.innerText = "Light Mode";
+            darkLightButtonIcon.classList.replace("fa-moon-o", "fa-sun-o");
+            document.querySelector("body").classList.add("dark-light");
+        }else{
+            darkLightButtonInner.innerText = "Dark Mode";
+            darkLightButtonIcon.classList.replace("fa-sun-o", "fa-moon-o");
+            document.querySelector("body").classList.remove("dark-light");
+        }
+    }
+})
+
+darkLightButton.addEventListener("click", function () {
+    document.querySelector("body").classList.toggle("dark-light");
+    darkLightMode();
+})
+
+function darkLightMode() {
+    if (darkLightButtonInner.innerText == "Light Mode") {
+        darkLightButtonInner.innerText = "Dark Mode";
+        darkLightButtonIcon.classList.replace("fa-sun-o", "fa-moon-o");
+    } else {
+        darkLightButtonInner.innerText = "Light Mode";
+        darkLightButtonIcon.classList.replace("fa-moon-o", "fa-sun-o");
+    }
+    localStorage.setItem("Mode", darkLightButtonInner.innerText);
+}
 
 const getCountry = (country) => {
     fetch(`${BASE_URL}/name/${country}?fullText=true`)

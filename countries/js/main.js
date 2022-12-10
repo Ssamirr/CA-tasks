@@ -1,10 +1,44 @@
 let searchCountry = document.querySelector(".search-country");
 let mainCountries = document.querySelector(".main-countries");
 let selectOption = document.querySelector(".main-header_select");
+let darkLightButton = document.querySelector(".header button");
+let darkLightButtonInner = darkLightButton.querySelector("span");
+let darkLightButtonIcon = darkLightButton.querySelector("i");
 let selectOptions = [];
 let selectedCountries = [];
 
 const BASE_URL = 'https://restcountries.com/v3.1';
+
+window.addEventListener("load", function () {
+    getData();
+    if (localStorage.getItem("Mode")) {
+        if (localStorage.getItem("Mode") == "Light Mode") {
+            darkLightButtonInner.innerText = "Light Mode";
+            darkLightButtonIcon.classList.replace("fa-moon-o", "fa-sun-o");
+            document.querySelector("body").classList.add("dark-light");
+        }else{
+            darkLightButtonInner.innerText = "Dark Mode";
+            darkLightButtonIcon.classList.replace("fa-sun-o", "fa-moon-o");
+            document.querySelector("body").classList.remove("dark-light");
+        }
+    }
+})
+
+darkLightButton.addEventListener("click", function () {
+    document.querySelector("body").classList.toggle("dark-light");
+    darkLightMode();
+})
+
+function darkLightMode() {
+    if (darkLightButtonInner.innerText == "Light Mode") {
+        darkLightButtonInner.innerText = "Dark Mode";
+        darkLightButtonIcon.classList.replace("fa-sun-o", "fa-moon-o");
+    } else {
+        darkLightButtonInner.innerText = "Light Mode";
+        darkLightButtonIcon.classList.replace("fa-moon-o", "fa-sun-o");
+    }
+    localStorage.setItem("Mode", darkLightButtonInner.innerText);
+}
 
 searchCountry.addEventListener("input", function () {
     if (searchCountry.value.length > 0) {
@@ -131,7 +165,7 @@ function showCountries(item) {
 
     let countriesCapital = document.createElement("span");
     countriesCapital.classList.add("main-countries__item__info__capital");
-    countriesCapital.innerHTML = `<span class="bold">capital:</span>${item.capital?item.capital:" "}</span>`
+    countriesCapital.innerHTML = `<span class="bold">capital:</span>${item.capital ? item.capital : " "}</span>`
 
     mainCountriesItem.appendChild(countriesFlag);
     mainCountriesItem.appendChild(mainCountriesItemInfo);
@@ -156,7 +190,6 @@ function showCountries(item) {
     })
 }
 
-getData();
 
 
 
