@@ -6,7 +6,7 @@ counter - https://ssamirr.github.io/CA-tasks/counter/
 countries - https://ssamirr.github.io/CA-tasks/countries/
 crudApplication - https://ssamirr.github.io/CA-tasks/crudApplication/
 customMethods - https://ssamirr.github.io/CA-tasks/customMethods/
-generatePaswword - https://ssamirr.github.io/CA-tasks/generatePaswword/
+generatePaswword - https://ssamirr.github.io/CA-tasks/generatePassword/
 guessNumber - https://ssamirr.github.io/CA-tasks/guessNumber/
 imageCarousel - https://ssamirr.github.io/CA-tasks/imageCarousel/
 randomImage - https://ssamirr.github.io/CA-tasks/randomImage/
