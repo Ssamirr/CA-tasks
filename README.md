@@ -14,3 +14,5 @@ replaceWords - https://ssamirr.github.io/CA-tasks/replaceWords/
 retryFunction - https://ssamirr.github.io/CA-tasks/retryFunction/
 rockPaperScissors - https://ssamirr.github.io/CA-tasks/rockPaperScissors/
 star - https://ssamirr.github.io/CA-tasks/star/
+calculator - https://ssamirr.github.io/CA-tasks/calculator/
+toasts - https://ssamirr.github.io/CA-tasks/toasts/
