@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
 });
 
 const network = {
-    getSupplier: async (url) => {
+    get: async (url) => {
 
         let response = {};
 
@@ -32,48 +32,11 @@ const network = {
 
     },
 
-    getCustomer: async (url) => {
-
-        let response = {};
-
-        await axiosInstance.get(`${url}`)
-            .then(res => {
-                response = res.data;
-            });
-
-        return response;
-
-    },
-
-    deleteCustomer: async (url, id) => {
+    delete: async (url, id) => {
 
         let response = {};
 
         await axiosInstance.delete(`${url}/${id}`)
-            .then(res => {
-                response = res.data;
-            });
-
-        return response;
-
-    },
-    getOrders: async (url) => {
-
-        let response = {};
-
-        await axiosInstance.get(`${url}`)
-            .then(res => {
-                response = res.data;
-            });
-
-        return response;
-
-    },
-    getProducts: async (url) => {
-
-        let response = {};
-
-        await axiosInstance.get(`${url}`)
             .then(res => {
                 response = res.data;
             });

@@ -28,7 +28,7 @@ addForm.addEventListener("submit", function () {
 })
 
 function getSupplier() {
-    network.getSupplier('/suppliers')
+    network.get('/suppliers')
         .then(res => {
             res.forEach(data => {
                 showSuppliers(data)
@@ -82,7 +82,7 @@ function add() {
 }
 
 function getCustomers() {
-    network.getSupplier('/customers')
+    network.get('/customers')
         .then(res => {
             let filteredProducts = res.sort((a, b) => (a.companyName > b.companyName) ? 1 : ((b.companyName > a.companyName) ? -1 : 0))
             filteredProducts.forEach(data => {
@@ -96,7 +96,7 @@ function getCustomers() {
 }
 
 function deleteCustomers(id) {
-    network.deleteCustomer('/customers', id)
+    network.delete('/customers', id)
 }
 
 function showCustomers(item) {
@@ -129,7 +129,7 @@ function showCustomers(item) {
 }
 
 function getOrdes() {
-    network.getOrders('/orders')
+    network.get('/orders')
         .then(res => {
             let filteredProducts = res.sort((a, b) => a.orderDate.localeCompare(b.orderDate))
             filteredProducts.forEach(data => {
@@ -158,7 +158,7 @@ function showOrders(item) {
 }
 
 function getProducts() {
-    network.getProducts('/products')
+    network.get('/products')
         .then(res => {
             let filteredProductsStartsC = res.filter(q => q.name?.startsWith("C"));
             console.log("Start with C", filteredProductsStartsC);
