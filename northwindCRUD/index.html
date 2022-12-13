@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <ul class="menu">
+            <li class="list" name="category-add">Add Category</li>
+            <li class="list" name="supplier-list">Supplier List</li>
+            <li class="list" name="customer-list">Customer List</li>
+            <li class="list" name="order-list">Order List</li>
+        </ul>
+    </div>
+
+    <section class="menu-info category-add">
+        <div class="main">
+            <div class="main-info">
+                <h1>Add Category</h1>
+                <form class="category-add" action="">
+                    <input required placeholder="Name" class="name-input input" type="text">
+                    <textarea required  placeholder="Description" class="description-input input" name="" id="" cols="20"
+                        rows="10"></textarea>
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="menu-info supplier-list">
+        <table>
+            <thead>
+                <th>Company Name</th>
+                <th>Contact Name</th>
+                <th>Contact Title</th>
+                <th>Country</th>
+            </thead>
+            <tbody class="tbody">
+
+            </tbody>
+        </table>
+    </section>
+
+    <section class="menu-info customer-list">
+        <table>
+            <thead>
+                <th>Company Name</th>
+                <th>Contact Name</th>
+                <th>Delete</th>
+            </thead>
+            <tbody class="tbody-customer">
+
+            </tbody>
+        </table>
+    </section>
+
+    <section class="menu-info order-list">
+        <table>
+            <thead>
+                <th>Customer Id</th>
+                <th>Emplyoee Id</th>
+                <th>Order Data</th>
+            </thead>
+            <tbody class="tbody-orders">
+
+            </tbody>
+        </table>
+    </section>
+
+
+    <div class="toaster">
+    </div>
+
+
+    <script src="./js/network.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+
+</html>
