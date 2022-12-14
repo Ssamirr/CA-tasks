@@ -18,3 +18,5 @@ calculator - https://ssamirr.github.io/CA-tasks/calculator/
 toasts - https://ssamirr.github.io/CA-tasks/toasts/
 northwindCrud - https://ssamirr.github.io/CA-tasks/northwindCRUD/
 countriesQuiz - https://ssamirr.github.io/CA-tasks/countriesQuiz/
+arrayChallanges - https://ssamirr.github.io/CA-tasks/arrayChallanges /
+
