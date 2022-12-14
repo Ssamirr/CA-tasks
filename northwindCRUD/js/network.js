@@ -44,4 +44,17 @@ const network = {
         return response;
 
     },
+
+    update: async (url,data) => {
+
+        let response = {};
+
+        await axiosInstance.put(`${url}`, data)
+            .then(res => {
+                response = res.data;
+            });
+
+        return response;
+
+    },
 }

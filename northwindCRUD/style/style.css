@@ -13,7 +13,7 @@ body {
     background: slategray;
 }
 
-.main{
+.main {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,7 +21,7 @@ body {
     width: 100%;
 }
 
-.main-info{
+.main-info {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,12 +33,12 @@ body {
     box-shadow: 0 0 12px rgb(0 0 0 / 18%);
 }
 
-.main h1{
+.main h1 {
     margin-bottom: 20px;
     color: mediumblue;
 }
 
-.category-add{
+.category-add {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,11 +46,12 @@ body {
     width: 100%;
 }
 
-.category-add input{
+.category-add input {
     height: 40px;
 }
 
-input,textarea{
+input,
+textarea {
     width: 100%;
     margin-bottom: 10px;
     border: 2px solid mediumblue;
@@ -58,7 +59,7 @@ input,textarea{
     padding: 10px;
 }
 
-button{
+button {
     background: white;
     border-radius: 5px;
     border: 2px solid mediumblue;
@@ -68,12 +69,12 @@ button{
     width: 100%;
 }
 
-button:hover{
+button:hover {
     color: white;
     background: mediumblue;
 }
 
-.toaster{
+.toaster {
     font-size: 0.8rem;
     font-weight: 600;
     position: absolute;
@@ -81,7 +82,7 @@ button:hover{
     right: 40px;
 }
 
-.toaster-add{
+.toaster-add {
     visibility: hidden;
     background: green;
     color: white;
@@ -90,18 +91,18 @@ button:hover{
     margin-bottom: 5px;
 }
 
-.toaster-show{
+.toaster-show {
     visibility: visible;
-    
+
 }
 
-.menu{
+.menu {
     display: flex;
     align-items: center;
     margin-bottom: 50px;
 }
 
-.menu li{
+.menu li {
     width: calc(100%/4);
     border: 1px solid mediumblue;
     padding: 10px;
@@ -112,18 +113,58 @@ button:hover{
     transition: 0.5s ease all;
 }
 
-.menu li:hover{
+.menu li:hover {
     opacity: 0.5;
 }
 
-table{
+table {
     width: 100%;
     border: 1px solid mediumblue;
     padding: 20px;
 }
 
-th,td{
+th,
+td {
     border: 1px solid mediumblue;
     padding: 10px;
     font-weight: 500;
+}
+
+.supplier-modal {
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -100%);
+    transition: 1s ease all;
+}
+
+.modal-inside {
+    width: 100%;
+    max-width: 400px;
+    width: 100%;
+    background: rgba(245, 245, 245, 0.915);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.item-id{
+    display: none;
+}
+
+.modal-inside button {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.modal-inside h3 {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.modal-show {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
 }

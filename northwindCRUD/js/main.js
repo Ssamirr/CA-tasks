@@ -5,6 +5,13 @@ let descriptionInput = document.querySelector(".description-input");
 let toaster = document.querySelector(".toaster");
 let menus = document.querySelectorAll(".menu-info");
 let lists = document.querySelectorAll(".list");
+let modal = document.querySelector(".supplier-modal");
+let modalForm = document.querySelector(".modal-form");
+let companyName = document.querySelector("#companyName");
+let contactName = document.querySelector("#contactName");
+let contactTitle = document.querySelector("#contactTitle");
+let country = document.querySelector("#country");
+let itemId = document.querySelector(".item-id");
 
 
 lists.forEach(function (element) {
@@ -28,6 +35,7 @@ addForm.addEventListener("submit", function () {
 })
 
 function getSupplier() {
+    document.querySelector(".tbody").innerHTML = "";
     network.get('/suppliers')
         .then(res => {
             res.forEach(data => {
@@ -49,14 +57,55 @@ function showSuppliers(item) {
     tdContactTitle.innerText = item.contactTitle;
 
     let tdregion = document.createElement("td");
-    tdregion.innerText = item.address.country;
+    tdregion.innerText = item.address?.country;
+
+    let tdUpdate = document.createElement("td");
+    let updateButton = document.createElement("button");
+    updateButton.innerText = "Update";
+    tdUpdate.appendChild(updateButton);
 
     tr.appendChild(tdCompanyName);
     tr.appendChild(tdContactName);
     tr.appendChild(tdContactTitle);
     tr.appendChild(tdregion);
+    tr.appendChild(tdUpdate);
+
+    updateButton.addEventListener("click", function () {
+        modal.classList.add("modal-show");
+        companyName.value = item.companyName;
+        contactName.value = item.contactName;
+        contactTitle.value = item.contactTitle;
+        country.value = item.address?.country;
+        itemId.value = item.id;
+        modalForm.addEventListener("submit", function () {
+            event.preventDefault();
+            updateSuppliers(item);
+            modal.classList.remove("modal-show");
+        })
+    })
 
     document.querySelector(".tbody").appendChild(tr);
+}
+
+function updateSuppliers(item) {
+
+    let newProduct = {
+        ...item,
+        companyName: companyName.value,
+        contactName: contactName.value,
+        contactTitle: contactTitle.value,
+        address: {
+            ...item.address,
+            country: country.value
+        },
+        id: itemId.value
+    }
+
+
+    network.update(`/suppliers/${item.id}`, newProduct)
+        .then(res => {
+            getSupplier();
+        })
 }
 
 function add() {
@@ -131,10 +180,54 @@ function showCustomers(item) {
 function getOrdes() {
     network.get('/orders')
         .then(res => {
+
             let filteredProducts = res.sort((a, b) => a.orderDate.localeCompare(b.orderDate))
             filteredProducts.forEach(data => {
                 showOrders(data)
             })
+
+            let filteredProductsBetween = res.filter(q => {
+                let dateOrder = new Date(q.orderDate).getFullYear();
+                return (dateOrder >= 1996 && dateOrder <= 1997)
+            });
+            console.log("Between 1996 and 1997 ", filteredProductsBetween)
+
+
+
+            // find hated and beloved
+
+
+            let filteredProductsMaxMin = res.map(q => {
+                let allSum = 0;
+                q.details.forEach(function (e) {
+                    let belovedPrice = q.details[0].unitPrice;
+                    let belovedQuantity = q.details[0].quantity;
+                    let belovedDiscount = q.details[0].discount;
+                    let sum = (belovedPrice * belovedQuantity) * (1 - belovedDiscount);
+                    allSum += sum;
+                })
+                q.totalAmount = allSum;
+            })
+
+            let ordersData = [];
+            res.forEach(element => {
+                let customer = ordersData.find(q => q.customerId == element.customerId);
+                if(!customer){
+                    let newCustomer = {
+                        customerId: element.customerId,
+                        customerTotalAmount: element.totalAmount
+                    };
+                    ordersData.push(newCustomer);
+                }
+                else{
+                    customer.customerTotalAmount = customer.customerTotalAmount + element.totalAmount;
+                }
+            });
+            
+            let sortedCustomer = ordersData.sort((a,b) => b.customerTotalAmount - a.customerTotalAmount);
+            console.log("Beloved ",sortedCustomer[0]);
+            console.log("Hated ",sortedCustomer[sortedCustomer.length-1]);
+
         })
 }
 
@@ -155,6 +248,7 @@ function showOrders(item) {
     tr.appendChild(tdOrderDate);
 
     document.querySelector(".tbody-orders").appendChild(tr);
+
 }
 
 function getProducts() {

@@ -28,7 +28,7 @@
                 <h1>Add Category</h1>
                 <form class="category-add" action="">
                     <input required placeholder="Name" class="name-input input" type="text">
-                    <textarea required  placeholder="Description" class="description-input input" name="" id="" cols="20"
+                    <textarea required placeholder="Description" class="description-input input" name="" id="" cols="20"
                         rows="10"></textarea>
                     <button type="submit">Add</button>
                 </form>
@@ -44,11 +44,28 @@
                 <th>Contact Name</th>
                 <th>Contact Title</th>
                 <th>Country</th>
+                <th>Update</th>
             </thead>
             <tbody class="tbody">
 
             </tbody>
         </table>
+
+        <div class="supplier-modal">
+            <div class="modal-inside">
+                <form class="modal-form" action="">
+                    <h3>Update</h3>
+                    <input class="modal-inputs" id="companyName" placeholder="Company Name" name="companyName" type="text">
+                    <input class="modal-inputs" id="contactName" placeholder="Contact Name" name="contactName" type="text">
+                    <input class="modal-inputs" id="contactTitle" placeholder="Contact Title" name="contactTitle" type="text">
+                    <input class="modal-inputs" id="country" placeholder="Country" name="country" type="text">
+                    <input class="item-id" type="text">
+                    <button style="font-weight: bold;" type="submit">Update</button>
+                </form>
+            </div>
+
+        </div>
+
     </section>
 
     <section class="menu-info customer-list">
