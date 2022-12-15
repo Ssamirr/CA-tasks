@@ -1,0 +1,24 @@
+.main {
+    width: 400px;
+    height: 40px;
+    background: white;
+    border: 1px solid;
+    margin-bottom: 2px;
+}
+
+.progress {
+    background: red;
+    height: 100%;
+    width: 0;
+    position: relative;
+}
+
+@keyframes fill {
+    from{
+        width: 0%;
+    }
+
+    to{
+        width: 100%;
+    }
+}
