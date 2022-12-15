@@ -5,75 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
 
-    <script>
-        // first
-        let firstArr = [1, 2, 3];
-        let secondArr = [4, 5, 6];
-        console.log("join",firstArr.concat(secondArr));
-
-        // second
-        let array2 = [1, 0, "2","",false,undefined,NaN,4,"sa",-22];
-
-        function InArray(array) {
-            let newArray=[];
-            for(let i=0;i<array.length;i++){
-                if(Number(array[i]) || typeof(array[i])=="string" && array[i].length>0){
-                    newArray.push(array[i]);
-                }
-            }
-            console.log("Removed and get new Array", newArray)
-        }
-        InArray(array2);
-
-        // third
-
-        function arrayFilled(times,value){
-            let filledArr = [];
-            for(let i=0;i<times;i++){
-                filledArr.push(value);
-            }
-            console.log("filled array",filledArr);
-        }
-        arrayFilled(6,0);
-
-        // fourth
-        let array3 = [10, 20, 30, 40, 50];
-
-        function moveArray(array,index,position){
-            let movedArray = [];
-            let changedElement;
-            for(let i=0;i<array.length;i++){
-                if(i!=index){
-                    movedArray.push(array[i]);
-                }else{
-                    changedElement=array[i];
-                }
-                if(i==position){
-                    movedArray.push(changedElement);
-                }
-            }
-            console.log("Moved ",movedArray);
-        }
-        moveArray(array3,0,2);
-        
-        // five
-
-        function increaseArray(start,lengthArray){
-            let increasedArray=[];
-            for(let i=start;i<=lengthArray;i++){
-                increasedArray.push(i);
-            }
-            console.log("increased",increasedArray);
-        }
-        increaseArray(1,4);
-
-
-    </script>
+<script  src="./main.js"></script>
 
 </body>
 
